@@ -1,35 +1,50 @@
 <script>
 
-document.addEventListener("DOMContentLoaded", () => {
-  var switcher = document.getElementById("toggle");
+  document.addEventListener("DOMContentLoaded", () => {
+    var switcher = document.getElementById("toggle");
 
-  switcher.addEventListener("click", () => {
+    switcher.addEventListener("click", () => {
 
-    if (localStorage.getItem('darkMode') === null) {
-      localStorage.setItem("darkMode", "true");
-      document.styleSheets[0].cssRules[23].media.mediaText =
-        "(prefers-color-scheme: dark)";
+      if (localStorage.getItem('darkMode') === null) {
+        localStorage.setItem("darkMode", "true");
+        try {
+          document.styleSheets[0].cssRules[23].media.mediaText =
+            "(prefers-color-scheme: dark)";
+        } catch (e) {
+          console.log(e);
+        }
+      } else {
+        try {
+          document.styleSheets[0].cssRules[23].media.mediaText =
+            "(prefers-color-scheme: light)";
+        } catch (e) {
+          console.log(e);
+        }
+        setTimeout(function () {
+          localStorage.removeItem("darkMode");
+        }, 100);
+      }
+    });
+
+    if (localStorage.getItem("darkMode")) {
+      try {
+        document.styleSheets[0].cssRules[23].media.mediaText =
+          "(prefers-color-scheme: dark)";
+      } catch (e) {
+        console.log(e);
+      }
     } else {
-      document.styleSheets[0].cssRules[23].media.mediaText =
-        "(prefers-color-scheme: light)";
-
-      setTimeout(function () {
-        localStorage.removeItem("darkMode");
-      }, 100);
+      try {
+        document.styleSheets[0].cssRules[23].media.mediaText =
+          "(prefers-color-scheme: light)";
+      } catch (e) {
+        console.log(e);
+      }
     }
+
+    document.body.style.visibility = "visible";
+
   });
-
-  if (localStorage.getItem("darkMode")) {
-    document.styleSheets[0].cssRules[23].media.mediaText =
-      "(prefers-color-scheme: dark)";
-  } else {
-    document.styleSheets[0].cssRules[23].media.mediaText =
-      "(prefers-color-scheme: light)";
-  }
-
-  document.body.style.visibility = "visible";
-
-});
 
   const flagemojiToPNG = (flag) => {
     var countryCode = Array.from(flag, (codeUnit) => codeUnit.codePointAt()).map(char => String.fromCharCode(char - 127397).toLowerCase()).join('')
