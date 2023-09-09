@@ -1,6 +1,6 @@
-<div style="position: relative;">
+<div id="div_toggle" style="display: none; position: relative;">
     <button id="toggle" style="position: fixed;bottom: 0px;right: 0px;margin: 3%;">
-        <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        <svg width="1.6em" height="1.6em" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink">
             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
             <title>ic_fluent_dark_theme_24_regular</title>
@@ -16,3 +16,12 @@
         </svg>
     </button>
 </div>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+        let div_button = document.getElementById('div_toggle');
+        div_button.style.display = 'block';
+    })
+
+</script>
