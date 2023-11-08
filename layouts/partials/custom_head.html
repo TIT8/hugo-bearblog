@@ -1,3 +1,35 @@
+<script>
+
+  if (localStorage.getItem('dark') == 'true') {
+    document.querySelector('html').toggleAttribute('data-dark-mode');
+  }
+
+  if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+    document.querySelector('html').style.display = "block";
+
+    //console.log('this should run only on firefox');
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+
+    document.querySelector('html').style.display = 'block';
+
+    let div_button = document.getElementById('div_toggle');
+    div_button.style.display = 'block';
+
+    let switcher = document.getElementById("toggle");
+    switcher.addEventListener("click", () => {
+      if (!localStorage.getItem('dark')) {
+        localStorage.setItem('dark', "true");
+      } else {
+        setTimeout(() => { localStorage.removeItem('dark') }, 10);
+      }
+      document.querySelector('html').toggleAttribute('data-dark-mode');
+    });
+
+  });
+
+</script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170196086-1"></script>
@@ -7,5 +39,9 @@
   function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
   gtag('config', 'UA-170196086-1', { 'anonymize_ip': true });
-  
+
 </script>
+
+<noscript>
+  <link rel="stylesheet" href="{{ relURL "noscript_style.css" }}" crossorigin="anonymous">
+</noscript>
