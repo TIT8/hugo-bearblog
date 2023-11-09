@@ -22,7 +22,7 @@
       if (!localStorage.getItem('dark')) {
         localStorage.setItem('dark', "true");
       } else {
-        setTimeout(() => { localStorage.removeItem('dark') }, 10);
+        localStorage.removeItem('dark');
       }
       document.querySelector('html').toggleAttribute('data-dark-mode');
     });
