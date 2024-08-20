@@ -14,8 +14,6 @@
     div_button.style.display = 'block';
 
     let switcher = document.getElementById("toggle");
-    switcher.style.display = 'block';
-    setTimeout(() => {switcher.classList.add("add");}, 100);
     switcher.addEventListener("click", () => {
       if (!localStorage.getItem('dark')) {
         localStorage.setItem('dark', "true");
