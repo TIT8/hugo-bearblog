@@ -15,8 +15,8 @@
   <meta name="referrer" content="no-referrer-when-downgrade" />
 
   <script>
-    if (localStorage.getItem('dark') == 'true') {
-      document.querySelector('html').toggleAttribute('data-dark-mode');
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.toggleAttribute('data-dark-mode');
     }
   </script>
 
@@ -37,6 +37,7 @@
   <header>
     {{- partial "header.html" . -}}
   </header>
+  <hr>
   <main>
     {{- block "main" . }}{{- end }}
   </main>

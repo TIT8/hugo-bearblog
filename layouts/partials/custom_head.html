@@ -1,19 +1,21 @@
 <script>
 
-  if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
-    document.querySelector('html').style.display = "block";
-
-    //console.log('this should run only on firefox');
-  }
-
   document.addEventListener("DOMContentLoaded", () => {
+
+    let switcher = document.querySelector(".div_switch input");
+    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+    if (currentTheme) {
+        if (currentTheme === 'dark') {
+            switcher.checked = true;
+        }
+    }
 
     document.querySelector('html').style.display = 'block';
 
     let div_button = document.getElementById('div_toggle');
     div_button.style.display = 'block';
 
-    let switcher = document.getElementById("toggle");
+    /*
     switcher.addEventListener("click", () => {
       if (!localStorage.getItem('dark')) {
         localStorage.setItem('dark', "true");
@@ -22,7 +24,19 @@
       }
       document.querySelector('html').toggleAttribute('data-dark-mode');
     });
+    */
 
+    switcher.addEventListener("change", switch_func, false);
+
+    function switch_func(e) {
+      document.documentElement.toggleAttribute('data-dark-mode');
+      if (e.target.checked) {
+          localStorage.setItem('theme', 'dark');
+      }
+      else {
+          localStorage.setItem('theme', 'light');
+      }   
+    }
   });
 
 </script>

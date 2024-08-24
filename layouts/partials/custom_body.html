@@ -8,6 +8,22 @@
   var reg = new RegExp('(?:\ud83c[\udde6-\uddff]){2}', 'g');
   document.body.innerHTML = document.body.innerHTML.replaceAll(reg, flagemojiToPNG);
 
+
+  if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+    let toggle_label = document.querySelector(".sup");
+    toggle_label.style.display = "inline-block";
+
+    let switcher = document.querySelector(".div_switch input");
+    const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+    if (currentTheme) {
+        if (currentTheme === 'dark') {
+            switcher.checked = true;
+        }
+    }
+    
+    document.querySelector('html').style.display = "block";
+  }
+
 </script>
 
 <noscript>
