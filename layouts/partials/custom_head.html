@@ -1,5 +1,9 @@
 <script>
 
+  if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+    document.querySelector('html').style.display = "block";
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
 
     let switcher = document.querySelector(".div_switch input");
