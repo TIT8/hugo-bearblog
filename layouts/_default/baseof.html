@@ -7,6 +7,7 @@
   <meta http-equiv="cache-control" content="no-cache" />
   <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
   <meta charset="utf-8">
+  <meta name="view-transition" content="same-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="darkreader-lock">
   {{- partial "favicon.html" . -}}
@@ -22,7 +23,10 @@
         if (event.persisted) {
           if((localStorage.getItem("theme")=="dark" && !document.documentElement.hasAttribute("data-dark-mode")) || (localStorage.getItem("theme")!="dark" && document.documentElement.hasAttribute("data-dark-mode"))){
             document.documentElement.style.display = "none";
-            location.reload(); 
+            document.documentElement.toggleAttribute("data-dark-mode");
+            setTimeout(() => {
+              document.documentElement.style.display = "block";
+            }, 0);
           }
           setTimeout(() => {
             let switcher = document.querySelector(".div_switch input");
@@ -32,7 +36,7 @@
                   switcher.checked = true;
                 }
             }
-          }, 0)
+          }, 60);
         }
       });
     } else {
@@ -69,10 +73,12 @@
 
 <body>
   {{- partial "toggle.html" . -}}
-  <header>
+  <a href="{{ "" | relURL }}" class="title">
+    <h2>{{ .Site.Title }}</h2>
+  </a>
+  <header class="sticky-header">
     {{- partial "header.html" . -}}
   </header>
-  <hr>
   <main>
     {{- block "main" . }}{{- end }}
   </main>

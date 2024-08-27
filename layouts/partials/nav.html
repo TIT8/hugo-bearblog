@@ -1,6 +1,8 @@
 <a href="{{ "" | relURL }}">Home</a>
+{{ $counter := 0 }}
 {{ range .Site.Menus.main }}
-<a href="{{ .URL }}">{{ .Name }}</a>
+{{ $counter = add $counter 1 }}
+<a id="a{{$counter}}" href="{{ .URL }}">{{ .Name }}</a>
 {{ end }}
 {{ with .Site.GetPage "/blog" }}
 <a href="{{ "blog" | relURL }}">Blog</a>

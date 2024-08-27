@@ -14,6 +14,18 @@
         }
     }
 
+    if(location.href.includes('') && !location.href.includes('contact') && !location.href.includes('contribute') && !location.href.includes('licenses') && !location.href.includes('copyright')){
+      document.querySelector('.sticky-header nav a').classList.add("active");
+    } else if(location.href.includes('contribute')){
+      document.querySelector(".sticky-header nav a#a1").classList.add("active");
+    } else if(location.href.includes('licenses')){
+      document.querySelector(".sticky-header nav a#a2").classList.add("active");
+    } else if(location.href.includes('contact')){
+      document.querySelector(".sticky-header nav a#a3").classList.add("active");
+    } else if(location.href.includes('copyright')){
+      document.querySelector(".sticky-header nav a#a4").classList.add("active");
+    }
+
     document.querySelector('html').style.display = 'block';
 
     let div_button = document.getElementById('div_toggle');
