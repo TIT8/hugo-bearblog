@@ -38,6 +38,13 @@
             }
           }, 70);
         }
+        if (window.location.hash) {
+            setTimeout(function () {
+                var hash = window.location.hash;
+                window.location.hash = "";
+                window.location.hash = hash;
+            }, 300);
+        }
       });
     } else {
       window.addEventListener('unload', function(){});
